@@ -1,0 +1,566 @@
+
+GPIO_Driver.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  00000376  000003ea  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000376  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000003f6  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000428  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000050  00000000  00000000  00000464  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000ab4  00000000  00000000  000004b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000077f  00000000  00000000  00000f68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000416  00000000  00000000  000016e7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000078  00000000  00000000  00001b00  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000449  00000000  00000000  00001b78  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000223  00000000  00000000  00001fc1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  000021e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 e7       	ldi	r30, 0x76	; 118
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  8e:	0c 94 b9 01 	jmp	0x372	; 0x372 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <main>:
+ * - Pin 1 on PORT C is toggled between HIGH and LOW.
+ * - Pin 2 on PORT D is toggled between LOW and HIGH.
+ * 
+ * @return int Returns 0 (not used in this context, as this is embedded code).
+ */
+int main(void) {
+  96:	cf 93       	push	r28
+  98:	df 93       	push	r29
+  9a:	cd b7       	in	r28, 0x3d	; 61
+  9c:	de b7       	in	r29, 0x3e	; 62
+  9e:	28 97       	sbiw	r28, 0x08	; 8
+  a0:	0f b6       	in	r0, 0x3f	; 63
+  a2:	f8 94       	cli
+  a4:	de bf       	out	0x3e, r29	; 62
+  a6:	0f be       	out	0x3f, r0	; 63
+  a8:	cd bf       	out	0x3d, r28	; 61
+    // Initialize GPIO pins for PORT B, PORT C, and PORT D
+    // The GPIO_Init function sets the direction (input/output) and the initial state (HIGH/LOW)
+    GPIO_Init(&gpioConfigB); // Initialize Pin 0 on PORT B as output, initial state LOW
+  aa:	88 e0       	ldi	r24, 0x08	; 8
+  ac:	91 e0       	ldi	r25, 0x01	; 1
+  ae:	0e 94 b2 00 	call	0x164	; 0x164 <GPIO_Init>
+    GPIO_Init(&gpioConfigC); // Initialize Pin 1 on PORT C as output, initial state HIGH
+  b2:	84 e0       	ldi	r24, 0x04	; 4
+  b4:	91 e0       	ldi	r25, 0x01	; 1
+  b6:	0e 94 b2 00 	call	0x164	; 0x164 <GPIO_Init>
+    GPIO_Init(&gpioConfigD); // Initialize Pin 2 on PORT D as output, initial state LOW
+  ba:	80 e0       	ldi	r24, 0x00	; 0
+  bc:	91 e0       	ldi	r25, 0x01	; 1
+  be:	0e 94 b2 00 	call	0x164	; 0x164 <GPIO_Init>
+    while (1) {
+        // Toggle states of the GPIO pins between HIGH and LOW
+        // The GPIO_Write function is used to set the output state of the selected pin
+
+        // Set Pin 0 on PORT B to HIGH
+        GPIO_Write(&gpioConfigB, HIGH);
+  c2:	61 e0       	ldi	r22, 0x01	; 1
+  c4:	88 e0       	ldi	r24, 0x08	; 8
+  c6:	91 e0       	ldi	r25, 0x01	; 1
+  c8:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+        // Set Pin 1 on PORT C to LOW
+        GPIO_Write(&gpioConfigC, LOW);
+  cc:	60 e0       	ldi	r22, 0x00	; 0
+  ce:	84 e0       	ldi	r24, 0x04	; 4
+  d0:	91 e0       	ldi	r25, 0x01	; 1
+  d2:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+        // Set Pin 2 on PORT D to HIGH
+        GPIO_Write(&gpioConfigD, HIGH);
+  d6:	61 e0       	ldi	r22, 0x01	; 1
+  d8:	80 e0       	ldi	r24, 0x00	; 0
+  da:	91 e0       	ldi	r25, 0x01	; 1
+  dc:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+
+        // Simple delay (not accurate, just for visual effect)
+        // Replace with a timer-based delay for accurate timing in production code
+        for (volatile uint32_t i = 0; i < 100000; i++);
+  e0:	1d 82       	std	Y+5, r1	; 0x05
+  e2:	1e 82       	std	Y+6, r1	; 0x06
+  e4:	1f 82       	std	Y+7, r1	; 0x07
+  e6:	18 86       	std	Y+8, r1	; 0x08
+  e8:	0b c0       	rjmp	.+22     	; 0x100 <main+0x6a>
+  ea:	8d 81       	ldd	r24, Y+5	; 0x05
+  ec:	9e 81       	ldd	r25, Y+6	; 0x06
+  ee:	af 81       	ldd	r26, Y+7	; 0x07
+  f0:	b8 85       	ldd	r27, Y+8	; 0x08
+  f2:	01 96       	adiw	r24, 0x01	; 1
+  f4:	a1 1d       	adc	r26, r1
+  f6:	b1 1d       	adc	r27, r1
+  f8:	8d 83       	std	Y+5, r24	; 0x05
+  fa:	9e 83       	std	Y+6, r25	; 0x06
+  fc:	af 83       	std	Y+7, r26	; 0x07
+  fe:	b8 87       	std	Y+8, r27	; 0x08
+ 100:	8d 81       	ldd	r24, Y+5	; 0x05
+ 102:	9e 81       	ldd	r25, Y+6	; 0x06
+ 104:	af 81       	ldd	r26, Y+7	; 0x07
+ 106:	b8 85       	ldd	r27, Y+8	; 0x08
+ 108:	80 3a       	cpi	r24, 0xA0	; 160
+ 10a:	96 48       	sbci	r25, 0x86	; 134
+ 10c:	a1 40       	sbci	r26, 0x01	; 1
+ 10e:	b1 05       	cpc	r27, r1
+ 110:	60 f3       	brcs	.-40     	; 0xea <main+0x54>
+
+        // Set Pin 0 on PORT B to LOW
+        GPIO_Write(&gpioConfigB, LOW);
+ 112:	60 e0       	ldi	r22, 0x00	; 0
+ 114:	88 e0       	ldi	r24, 0x08	; 8
+ 116:	91 e0       	ldi	r25, 0x01	; 1
+ 118:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+        // Set Pin 1 on PORT C to HIGH
+        GPIO_Write(&gpioConfigC, HIGH);
+ 11c:	61 e0       	ldi	r22, 0x01	; 1
+ 11e:	84 e0       	ldi	r24, 0x04	; 4
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+        // Set Pin 2 on PORT D to LOW
+        GPIO_Write(&gpioConfigD, LOW);
+ 126:	60 e0       	ldi	r22, 0x00	; 0
+ 128:	80 e0       	ldi	r24, 0x00	; 0
+ 12a:	91 e0       	ldi	r25, 0x01	; 1
+ 12c:	0e 94 60 01 	call	0x2c0	; 0x2c0 <GPIO_Write>
+
+        // Simple delay again to allow for visual state changes
+        for (volatile uint32_t i = 0; i < 100000; i++);
+ 130:	19 82       	std	Y+1, r1	; 0x01
+ 132:	1a 82       	std	Y+2, r1	; 0x02
+ 134:	1b 82       	std	Y+3, r1	; 0x03
+ 136:	1c 82       	std	Y+4, r1	; 0x04
+ 138:	0b c0       	rjmp	.+22     	; 0x150 <main+0xba>
+ 13a:	89 81       	ldd	r24, Y+1	; 0x01
+ 13c:	9a 81       	ldd	r25, Y+2	; 0x02
+ 13e:	ab 81       	ldd	r26, Y+3	; 0x03
+ 140:	bc 81       	ldd	r27, Y+4	; 0x04
+ 142:	01 96       	adiw	r24, 0x01	; 1
+ 144:	a1 1d       	adc	r26, r1
+ 146:	b1 1d       	adc	r27, r1
+ 148:	89 83       	std	Y+1, r24	; 0x01
+ 14a:	9a 83       	std	Y+2, r25	; 0x02
+ 14c:	ab 83       	std	Y+3, r26	; 0x03
+ 14e:	bc 83       	std	Y+4, r27	; 0x04
+ 150:	89 81       	ldd	r24, Y+1	; 0x01
+ 152:	9a 81       	ldd	r25, Y+2	; 0x02
+ 154:	ab 81       	ldd	r26, Y+3	; 0x03
+ 156:	bc 81       	ldd	r27, Y+4	; 0x04
+ 158:	80 3a       	cpi	r24, 0xA0	; 160
+ 15a:	96 48       	sbci	r25, 0x86	; 134
+ 15c:	a1 40       	sbci	r26, 0x01	; 1
+ 15e:	b1 05       	cpc	r27, r1
+ 160:	60 f3       	brcs	.-40     	; 0x13a <main+0xa4>
+ 162:	af cf       	rjmp	.-162    	; 0xc2 <main+0x2c>
+
+00000164 <GPIO_Init>:
+ * This function configures the direction (input/output) and the 
+ * initial state (HIGH/LOW) of the selected GPIO pin on a specified port.
+ * 
+ * @param config Pointer to the GPIO configuration structure.
+ */
+void GPIO_Init(GPIO_Config_t *config) {
+ 164:	fc 01       	movw	r30, r24
+    switch (config->port) {
+ 166:	81 81       	ldd	r24, Z+1	; 0x01
+ 168:	81 30       	cpi	r24, 0x01	; 1
+ 16a:	e1 f1       	breq	.+120    	; 0x1e4 <GPIO_Init+0x80>
+ 16c:	20 f0       	brcs	.+8      	; 0x176 <GPIO_Init+0x12>
+ 16e:	82 30       	cpi	r24, 0x02	; 2
+ 170:	09 f4       	brne	.+2      	; 0x174 <GPIO_Init+0x10>
+ 172:	6f c0       	rjmp	.+222    	; 0x252 <GPIO_Init+0xee>
+ 174:	08 95       	ret
+        case PORT_B:
+            // Configure the direction of the pin
+            if (config->mode == OUTPUT) {
+ 176:	82 81       	ldd	r24, Z+2	; 0x02
+ 178:	81 30       	cpi	r24, 0x01	; 1
+ 17a:	61 f4       	brne	.+24     	; 0x194 <GPIO_Init+0x30>
+                DDRB |= (1 << config->pinNumber);  // Set as output
+ 17c:	24 b1       	in	r18, 0x04	; 4
+ 17e:	81 e0       	ldi	r24, 0x01	; 1
+ 180:	90 e0       	ldi	r25, 0x00	; 0
+ 182:	00 80       	ld	r0, Z
+ 184:	02 c0       	rjmp	.+4      	; 0x18a <GPIO_Init+0x26>
+ 186:	88 0f       	add	r24, r24
+ 188:	99 1f       	adc	r25, r25
+ 18a:	0a 94       	dec	r0
+ 18c:	e2 f7       	brpl	.-8      	; 0x186 <GPIO_Init+0x22>
+ 18e:	82 2b       	or	r24, r18
+ 190:	84 b9       	out	0x04, r24	; 4
+ 192:	0c c0       	rjmp	.+24     	; 0x1ac <GPIO_Init+0x48>
+            } else {
+                DDRB &= ~(1 << config->pinNumber); // Set as input
+ 194:	24 b1       	in	r18, 0x04	; 4
+ 196:	81 e0       	ldi	r24, 0x01	; 1
+ 198:	90 e0       	ldi	r25, 0x00	; 0
+ 19a:	00 80       	ld	r0, Z
+ 19c:	02 c0       	rjmp	.+4      	; 0x1a2 <GPIO_Init+0x3e>
+ 19e:	88 0f       	add	r24, r24
+ 1a0:	99 1f       	adc	r25, r25
+ 1a2:	0a 94       	dec	r0
+ 1a4:	e2 f7       	brpl	.-8      	; 0x19e <GPIO_Init+0x3a>
+ 1a6:	80 95       	com	r24
+ 1a8:	82 23       	and	r24, r18
+ 1aa:	84 b9       	out	0x04, r24	; 4
+            }
+            // Set the initial state of the pin
+            if (config->initialState == HIGH) {
+ 1ac:	83 81       	ldd	r24, Z+3	; 0x03
+ 1ae:	81 30       	cpi	r24, 0x01	; 1
+ 1b0:	61 f4       	brne	.+24     	; 0x1ca <GPIO_Init+0x66>
+                PORTB |= (1 << config->pinNumber);
+ 1b2:	25 b1       	in	r18, 0x05	; 5
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	00 80       	ld	r0, Z
+ 1ba:	02 c0       	rjmp	.+4      	; 0x1c0 <GPIO_Init+0x5c>
+ 1bc:	88 0f       	add	r24, r24
+ 1be:	99 1f       	adc	r25, r25
+ 1c0:	0a 94       	dec	r0
+ 1c2:	e2 f7       	brpl	.-8      	; 0x1bc <GPIO_Init+0x58>
+ 1c4:	82 2b       	or	r24, r18
+ 1c6:	85 b9       	out	0x05, r24	; 5
+ 1c8:	08 95       	ret
+            } else {
+                PORTB &= ~(1 << config->pinNumber);
+ 1ca:	25 b1       	in	r18, 0x05	; 5
+ 1cc:	81 e0       	ldi	r24, 0x01	; 1
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	00 80       	ld	r0, Z
+ 1d2:	02 c0       	rjmp	.+4      	; 0x1d8 <GPIO_Init+0x74>
+ 1d4:	88 0f       	add	r24, r24
+ 1d6:	99 1f       	adc	r25, r25
+ 1d8:	0a 94       	dec	r0
+ 1da:	e2 f7       	brpl	.-8      	; 0x1d4 <GPIO_Init+0x70>
+ 1dc:	80 95       	com	r24
+ 1de:	82 23       	and	r24, r18
+ 1e0:	85 b9       	out	0x05, r24	; 5
+ 1e2:	08 95       	ret
+            }
+            break;
+
+        case PORT_C:
+            // Configure the direction of the pin
+            if (config->mode == OUTPUT) {
+ 1e4:	82 81       	ldd	r24, Z+2	; 0x02
+ 1e6:	81 30       	cpi	r24, 0x01	; 1
+ 1e8:	61 f4       	brne	.+24     	; 0x202 <GPIO_Init+0x9e>
+                DDRC |= (1 << config->pinNumber);
+ 1ea:	27 b1       	in	r18, 0x07	; 7
+ 1ec:	81 e0       	ldi	r24, 0x01	; 1
+ 1ee:	90 e0       	ldi	r25, 0x00	; 0
+ 1f0:	00 80       	ld	r0, Z
+ 1f2:	02 c0       	rjmp	.+4      	; 0x1f8 <GPIO_Init+0x94>
+ 1f4:	88 0f       	add	r24, r24
+ 1f6:	99 1f       	adc	r25, r25
+ 1f8:	0a 94       	dec	r0
+ 1fa:	e2 f7       	brpl	.-8      	; 0x1f4 <GPIO_Init+0x90>
+ 1fc:	82 2b       	or	r24, r18
+ 1fe:	87 b9       	out	0x07, r24	; 7
+ 200:	0c c0       	rjmp	.+24     	; 0x21a <GPIO_Init+0xb6>
+            } else {
+                DDRC &= ~(1 << config->pinNumber);
+ 202:	27 b1       	in	r18, 0x07	; 7
+ 204:	81 e0       	ldi	r24, 0x01	; 1
+ 206:	90 e0       	ldi	r25, 0x00	; 0
+ 208:	00 80       	ld	r0, Z
+ 20a:	02 c0       	rjmp	.+4      	; 0x210 <GPIO_Init+0xac>
+ 20c:	88 0f       	add	r24, r24
+ 20e:	99 1f       	adc	r25, r25
+ 210:	0a 94       	dec	r0
+ 212:	e2 f7       	brpl	.-8      	; 0x20c <GPIO_Init+0xa8>
+ 214:	80 95       	com	r24
+ 216:	82 23       	and	r24, r18
+ 218:	87 b9       	out	0x07, r24	; 7
+            }
+            // Set the initial state of the pin
+            if (config->initialState == HIGH) {
+ 21a:	83 81       	ldd	r24, Z+3	; 0x03
+ 21c:	81 30       	cpi	r24, 0x01	; 1
+ 21e:	61 f4       	brne	.+24     	; 0x238 <GPIO_Init+0xd4>
+                PORTC |= (1 << config->pinNumber);
+ 220:	28 b1       	in	r18, 0x08	; 8
+ 222:	81 e0       	ldi	r24, 0x01	; 1
+ 224:	90 e0       	ldi	r25, 0x00	; 0
+ 226:	00 80       	ld	r0, Z
+ 228:	02 c0       	rjmp	.+4      	; 0x22e <GPIO_Init+0xca>
+ 22a:	88 0f       	add	r24, r24
+ 22c:	99 1f       	adc	r25, r25
+ 22e:	0a 94       	dec	r0
+ 230:	e2 f7       	brpl	.-8      	; 0x22a <GPIO_Init+0xc6>
+ 232:	82 2b       	or	r24, r18
+ 234:	88 b9       	out	0x08, r24	; 8
+ 236:	08 95       	ret
+            } else {
+                PORTC &= ~(1 << config->pinNumber);
+ 238:	28 b1       	in	r18, 0x08	; 8
+ 23a:	81 e0       	ldi	r24, 0x01	; 1
+ 23c:	90 e0       	ldi	r25, 0x00	; 0
+ 23e:	00 80       	ld	r0, Z
+ 240:	02 c0       	rjmp	.+4      	; 0x246 <GPIO_Init+0xe2>
+ 242:	88 0f       	add	r24, r24
+ 244:	99 1f       	adc	r25, r25
+ 246:	0a 94       	dec	r0
+ 248:	e2 f7       	brpl	.-8      	; 0x242 <GPIO_Init+0xde>
+ 24a:	80 95       	com	r24
+ 24c:	82 23       	and	r24, r18
+ 24e:	88 b9       	out	0x08, r24	; 8
+ 250:	08 95       	ret
+            }
+            break;
+
+        case PORT_D:
+            // Configure the direction of the pin
+            if (config->mode == OUTPUT) {
+ 252:	82 81       	ldd	r24, Z+2	; 0x02
+ 254:	81 30       	cpi	r24, 0x01	; 1
+ 256:	61 f4       	brne	.+24     	; 0x270 <GPIO_Init+0x10c>
+                DDRD |= (1 << config->pinNumber);
+ 258:	2a b1       	in	r18, 0x0a	; 10
+ 25a:	81 e0       	ldi	r24, 0x01	; 1
+ 25c:	90 e0       	ldi	r25, 0x00	; 0
+ 25e:	00 80       	ld	r0, Z
+ 260:	02 c0       	rjmp	.+4      	; 0x266 <GPIO_Init+0x102>
+ 262:	88 0f       	add	r24, r24
+ 264:	99 1f       	adc	r25, r25
+ 266:	0a 94       	dec	r0
+ 268:	e2 f7       	brpl	.-8      	; 0x262 <GPIO_Init+0xfe>
+ 26a:	82 2b       	or	r24, r18
+ 26c:	8a b9       	out	0x0a, r24	; 10
+ 26e:	0c c0       	rjmp	.+24     	; 0x288 <GPIO_Init+0x124>
+            } else {
+                DDRD &= ~(1 << config->pinNumber);
+ 270:	2a b1       	in	r18, 0x0a	; 10
+ 272:	81 e0       	ldi	r24, 0x01	; 1
+ 274:	90 e0       	ldi	r25, 0x00	; 0
+ 276:	00 80       	ld	r0, Z
+ 278:	02 c0       	rjmp	.+4      	; 0x27e <GPIO_Init+0x11a>
+ 27a:	88 0f       	add	r24, r24
+ 27c:	99 1f       	adc	r25, r25
+ 27e:	0a 94       	dec	r0
+ 280:	e2 f7       	brpl	.-8      	; 0x27a <GPIO_Init+0x116>
+ 282:	80 95       	com	r24
+ 284:	82 23       	and	r24, r18
+ 286:	8a b9       	out	0x0a, r24	; 10
+            }
+            // Set the initial state of the pin
+            if (config->initialState == HIGH) {
+ 288:	83 81       	ldd	r24, Z+3	; 0x03
+ 28a:	81 30       	cpi	r24, 0x01	; 1
+ 28c:	61 f4       	brne	.+24     	; 0x2a6 <GPIO_Init+0x142>
+                PORTD |= (1 << config->pinNumber);
+ 28e:	2b b1       	in	r18, 0x0b	; 11
+ 290:	81 e0       	ldi	r24, 0x01	; 1
+ 292:	90 e0       	ldi	r25, 0x00	; 0
+ 294:	00 80       	ld	r0, Z
+ 296:	02 c0       	rjmp	.+4      	; 0x29c <GPIO_Init+0x138>
+ 298:	88 0f       	add	r24, r24
+ 29a:	99 1f       	adc	r25, r25
+ 29c:	0a 94       	dec	r0
+ 29e:	e2 f7       	brpl	.-8      	; 0x298 <GPIO_Init+0x134>
+ 2a0:	82 2b       	or	r24, r18
+ 2a2:	8b b9       	out	0x0b, r24	; 11
+ 2a4:	08 95       	ret
+            } else {
+                PORTD &= ~(1 << config->pinNumber);
+ 2a6:	2b b1       	in	r18, 0x0b	; 11
+ 2a8:	81 e0       	ldi	r24, 0x01	; 1
+ 2aa:	90 e0       	ldi	r25, 0x00	; 0
+ 2ac:	00 80       	ld	r0, Z
+ 2ae:	02 c0       	rjmp	.+4      	; 0x2b4 <GPIO_Init+0x150>
+ 2b0:	88 0f       	add	r24, r24
+ 2b2:	99 1f       	adc	r25, r25
+ 2b4:	0a 94       	dec	r0
+ 2b6:	e2 f7       	brpl	.-8      	; 0x2b0 <GPIO_Init+0x14c>
+ 2b8:	80 95       	com	r24
+ 2ba:	82 23       	and	r24, r18
+ 2bc:	8b b9       	out	0x0b, r24	; 11
+ 2be:	08 95       	ret
+
+000002c0 <GPIO_Write>:
+ * provided state (HIGH or LOW).
+ * 
+ * @param config Pointer to the GPIO configuration structure.
+ * @param state The state to be written to the GPIO pin (HIGH/LOW).
+ */
+void GPIO_Write(GPIO_Config_t *config, einitialState_t state) {
+ 2c0:	fc 01       	movw	r30, r24
+    switch (config->port) {
+ 2c2:	91 81       	ldd	r25, Z+1	; 0x01
+ 2c4:	91 30       	cpi	r25, 0x01	; 1
+ 2c6:	f9 f0       	breq	.+62     	; 0x306 <GPIO_Write+0x46>
+ 2c8:	18 f0       	brcs	.+6      	; 0x2d0 <GPIO_Write+0x10>
+ 2ca:	92 30       	cpi	r25, 0x02	; 2
+ 2cc:	b9 f1       	breq	.+110    	; 0x33c <GPIO_Write+0x7c>
+ 2ce:	08 95       	ret
+        case PORT_B:
+            if (state == HIGH) {
+ 2d0:	61 30       	cpi	r22, 0x01	; 1
+ 2d2:	61 f4       	brne	.+24     	; 0x2ec <GPIO_Write+0x2c>
+                PORTB |= (1 << config->pinNumber);
+ 2d4:	25 b1       	in	r18, 0x05	; 5
+ 2d6:	81 e0       	ldi	r24, 0x01	; 1
+ 2d8:	90 e0       	ldi	r25, 0x00	; 0
+ 2da:	00 80       	ld	r0, Z
+ 2dc:	02 c0       	rjmp	.+4      	; 0x2e2 <GPIO_Write+0x22>
+ 2de:	88 0f       	add	r24, r24
+ 2e0:	99 1f       	adc	r25, r25
+ 2e2:	0a 94       	dec	r0
+ 2e4:	e2 f7       	brpl	.-8      	; 0x2de <GPIO_Write+0x1e>
+ 2e6:	82 2b       	or	r24, r18
+ 2e8:	85 b9       	out	0x05, r24	; 5
+ 2ea:	08 95       	ret
+            } else {
+                PORTB &= ~(1 << config->pinNumber);
+ 2ec:	25 b1       	in	r18, 0x05	; 5
+ 2ee:	81 e0       	ldi	r24, 0x01	; 1
+ 2f0:	90 e0       	ldi	r25, 0x00	; 0
+ 2f2:	00 80       	ld	r0, Z
+ 2f4:	02 c0       	rjmp	.+4      	; 0x2fa <GPIO_Write+0x3a>
+ 2f6:	88 0f       	add	r24, r24
+ 2f8:	99 1f       	adc	r25, r25
+ 2fa:	0a 94       	dec	r0
+ 2fc:	e2 f7       	brpl	.-8      	; 0x2f6 <GPIO_Write+0x36>
+ 2fe:	80 95       	com	r24
+ 300:	82 23       	and	r24, r18
+ 302:	85 b9       	out	0x05, r24	; 5
+ 304:	08 95       	ret
+            }
+            break;
+
+        case PORT_C:
+            if (state == HIGH) {
+ 306:	61 30       	cpi	r22, 0x01	; 1
+ 308:	61 f4       	brne	.+24     	; 0x322 <GPIO_Write+0x62>
+                PORTC |= (1 << config->pinNumber);
+ 30a:	28 b1       	in	r18, 0x08	; 8
+ 30c:	81 e0       	ldi	r24, 0x01	; 1
+ 30e:	90 e0       	ldi	r25, 0x00	; 0
+ 310:	00 80       	ld	r0, Z
+ 312:	02 c0       	rjmp	.+4      	; 0x318 <GPIO_Write+0x58>
+ 314:	88 0f       	add	r24, r24
+ 316:	99 1f       	adc	r25, r25
+ 318:	0a 94       	dec	r0
+ 31a:	e2 f7       	brpl	.-8      	; 0x314 <GPIO_Write+0x54>
+ 31c:	82 2b       	or	r24, r18
+ 31e:	88 b9       	out	0x08, r24	; 8
+ 320:	08 95       	ret
+            } else {
+                PORTC &= ~(1 << config->pinNumber);
+ 322:	28 b1       	in	r18, 0x08	; 8
+ 324:	81 e0       	ldi	r24, 0x01	; 1
+ 326:	90 e0       	ldi	r25, 0x00	; 0
+ 328:	00 80       	ld	r0, Z
+ 32a:	02 c0       	rjmp	.+4      	; 0x330 <GPIO_Write+0x70>
+ 32c:	88 0f       	add	r24, r24
+ 32e:	99 1f       	adc	r25, r25
+ 330:	0a 94       	dec	r0
+ 332:	e2 f7       	brpl	.-8      	; 0x32c <GPIO_Write+0x6c>
+ 334:	80 95       	com	r24
+ 336:	82 23       	and	r24, r18
+ 338:	88 b9       	out	0x08, r24	; 8
+ 33a:	08 95       	ret
+            }
+            break;
+
+        case PORT_D:
+            if (state == HIGH) {
+ 33c:	61 30       	cpi	r22, 0x01	; 1
+ 33e:	61 f4       	brne	.+24     	; 0x358 <GPIO_Write+0x98>
+                PORTD |= (1 << config->pinNumber);
+ 340:	2b b1       	in	r18, 0x0b	; 11
+ 342:	81 e0       	ldi	r24, 0x01	; 1
+ 344:	90 e0       	ldi	r25, 0x00	; 0
+ 346:	00 80       	ld	r0, Z
+ 348:	02 c0       	rjmp	.+4      	; 0x34e <GPIO_Write+0x8e>
+ 34a:	88 0f       	add	r24, r24
+ 34c:	99 1f       	adc	r25, r25
+ 34e:	0a 94       	dec	r0
+ 350:	e2 f7       	brpl	.-8      	; 0x34a <GPIO_Write+0x8a>
+ 352:	82 2b       	or	r24, r18
+ 354:	8b b9       	out	0x0b, r24	; 11
+ 356:	08 95       	ret
+            } else {
+                PORTD &= ~(1 << config->pinNumber);
+ 358:	2b b1       	in	r18, 0x0b	; 11
+ 35a:	81 e0       	ldi	r24, 0x01	; 1
+ 35c:	90 e0       	ldi	r25, 0x00	; 0
+ 35e:	00 80       	ld	r0, Z
+ 360:	02 c0       	rjmp	.+4      	; 0x366 <GPIO_Write+0xa6>
+ 362:	88 0f       	add	r24, r24
+ 364:	99 1f       	adc	r25, r25
+ 366:	0a 94       	dec	r0
+ 368:	e2 f7       	brpl	.-8      	; 0x362 <GPIO_Write+0xa2>
+ 36a:	80 95       	com	r24
+ 36c:	82 23       	and	r24, r18
+ 36e:	8b b9       	out	0x0b, r24	; 11
+ 370:	08 95       	ret
+
+00000372 <_exit>:
+ 372:	f8 94       	cli
+
+00000374 <__stop_program>:
+ 374:	ff cf       	rjmp	.-2      	; 0x374 <__stop_program>
