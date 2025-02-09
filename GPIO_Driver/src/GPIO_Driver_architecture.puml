@@ -1,0 +1,31 @@
+@startuml
+
+' Define GPIO_Config_t class with attributes
+class GPIO_Config_t {
+  - uint8_t port
+  - uint8_t pinNumber
+  - uint8_t mode
+  - uint8_t initialState
+}
+
+' Define GPIO driver functions as methods of a class
+class GPIO_Driver {
+  + GPIO_Init(config: GPIO_Config_t): void
+  + GPIO_Write(config: GPIO_Config_t, state: uint8_t): void
+}
+
+' Relationships between classes
+GPIO_Driver --> GPIO_Config_t : uses
+
+' Define constants for GPIO states and modes
+class GPIO_Constants {
+  - HIGH: uint8_t
+  - LOW: uint8_t
+  - OUTPUT: uint8_t
+  - INPUT: uint8_t
+}
+
+' Relationships between constants and GPIO_Driver
+GPIO_Driver --> GPIO_Constants : depends on
+
+@enduml
