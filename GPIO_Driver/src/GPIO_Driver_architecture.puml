@@ -12,6 +12,7 @@ class GPIO_Config_t {
 class GPIO_Driver {
   + GPIO_Init(config: GPIO_Config_t): void
   + GPIO_Write(config: GPIO_Config_t, state: uint8_t): void
+  + GPIO_Read(config: GPIO_Config_t): uint8_t
 }
 
 ' Relationships between classes
